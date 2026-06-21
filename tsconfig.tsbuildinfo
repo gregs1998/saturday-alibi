@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/data.ts","./src/main.tsx","./src/types.ts","./src/phone/browserapp.tsx","./src/phone/callsapp.tsx","./src/phone/homescreen.tsx","./src/phone/iphoneshell.tsx","./src/phone/messagesapp.tsx","./src/phone/notesapp.tsx","./src/phone/photosapp.tsx"],"version":"5.9.3"}
