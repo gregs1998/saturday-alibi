@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Forensics Station — The Saturday Alibi Worksheet</title>
+    <style>
+      :root {
+        --ink: #18233f;
+        --muted: #5b6680;
+        --line: #c7cede;
+        --accent: #1f6feb;
+        --amber: #b46a00;
+        --rose: #b4344f;
+        --panel: #f3f6fc;
+      }
+
+      @page {
+        size: Letter;
+        margin: 14mm 14mm 12mm 14mm;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+        color: var(--ink);
+        font-size: 10.5pt;
+        line-height: 1.38;
+      }
+
+      .page {
+        page-break-after: always;
+      }
+      .page:last-child {
+        page-break-after: auto;
+      }
+
+      /* ---- Header ---- */
+      header.mast {
+        border-bottom: 2.5px solid var(--ink);
+        padding-bottom: 8px;
+        margin-bottom: 12px;
+      }
+      .mast-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 12px;
+      }
+      .eyebrow {
+        font-size: 8pt;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 700;
+      }
+      h1 {
+        font-size: 19pt;
+        margin: 2px 0 0;
+        letter-spacing: -0.01em;
+      }
+      .badge {
+        font-size: 8pt;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--muted);
+        text-align: right;
+        line-height: 1.5;
+      }
+      .namebar {
+        display: flex;
+        gap: 18px;
+        margin-top: 10px;
+        font-size: 9.5pt;
+      }
+      .namebar .fld {
+        flex: 1;
+        display: flex;
+        align-items: baseline;
+        gap: 6px;
+      }
+      .namebar .fld b {
+        white-space: nowrap;
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .uline {
+        flex: 1;
+        border-bottom: 1px solid var(--line);
+        height: 14px;
+      }
+
+      /* ---- Sections ---- */
+      .sec {
+        margin-top: 13px;
+        break-inside: avoid;
+      }
+      .sec-h {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 5px;
+      }
+      .sec-n {
+        background: var(--ink);
+        color: #fff;
+        font-weight: 700;
+        font-size: 9.5pt;
+        width: 19px;
+        height: 19px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex: none;
+      }
+      .sec-h h2 {
+        font-size: 12pt;
+        margin: 0;
+      }
+      .sec-h .time {
+        margin-left: auto;
+        font-size: 8pt;
+        color: var(--muted);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 1px 8px;
+        white-space: nowrap;
+      }
+
+      p {
+        margin: 4px 0;
+      }
+      .lead {
+        color: var(--ink);
+      }
+      .muted {
+        color: var(--muted);
+      }
+
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 7px;
+        padding: 8px 11px;
+        margin: 6px 0;
+      }
+      .panel.brief {
+        border-left: 3px solid var(--accent);
+      }
+      .panel.tip {
+        border-left: 3px solid var(--amber);
+      }
+      .panel .ph {
+        font-size: 7.5pt;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-weight: 700;
+        color: var(--muted);
+        margin-bottom: 3px;
+      }
+      .panel.tip .ph {
+        color: var(--amber);
+      }
+
+      .q {
+        margin-top: 7px;
+        break-inside: avoid;
+      }
+      .q .qt {
+        font-weight: 600;
+      }
+      .q .qt .qnum {
+        color: var(--accent);
+        font-weight: 700;
+      }
+      .hint {
+        font-size: 8.5pt;
+        color: var(--muted);
+        font-style: italic;
+      }
+      .ans {
+        border-bottom: 1px solid var(--line);
+        height: 15px;
+        margin-top: 9px;
+      }
+      .ans.tall {
+        margin-top: 13px;
+      }
+
+      /* ---- Evidence table ---- */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 6px;
+        font-size: 9pt;
+      }
+      th,
+      td {
+        border: 1px solid var(--line);
+        padding: 5px 6px;
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        background: var(--panel);
+        font-size: 7.5pt;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+      }
+      td.app {
+        font-weight: 600;
+        width: 92px;
+        white-space: nowrap;
+      }
+      td.blank {
+        height: 26px;
+      }
+
+      .key {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 5px 16px;
+        margin-top: 5px;
+      }
+      .key .item {
+        font-size: 9.5pt;
+      }
+      .key .item b {
+        color: var(--accent);
+      }
+
+      .verdict {
+        display: flex;
+        gap: 16px;
+        margin: 7px 0 3px;
+      }
+      .vbox {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-weight: 600;
+      }
+      .vbox .box {
+        width: 15px;
+        height: 15px;
+        border: 1.6px solid var(--ink);
+        border-radius: 3px;
+      }
+
+      .footer-note {
+        margin-top: 10px;
+        font-size: 8pt;
+        color: var(--muted);
+        text-align: center;
+        border-top: 1px solid var(--line);
+        padding-top: 6px;
+      }
+
+      .timeline-row {
+        display: grid;
+        grid-template-columns: 78px 1fr;
+        gap: 8px;
+        align-items: end;
+        margin-top: 11px;
+      }
+      .timeline-row .when {
+        border-bottom: 1px solid var(--line);
+        height: 14px;
+        font-size: 8.5pt;
+        color: var(--muted);
+      }
+      .timeline-row .what {
+        border-bottom: 1px solid var(--line);
+        height: 14px;
+      }
+      .tl-head {
+        display: grid;
+        grid-template-columns: 78px 1fr;
+        gap: 8px;
+        font-size: 7.5pt;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        margin-top: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ================= PAGE 1 ================= -->
+    <section class="page">
+      <header class="mast">
+        <div class="mast-top">
+          <div>
+            <div class="eyebrow">Kaycenia Security Academy · Forensics Station</div>
+            <h1>Case File: The Saturday Alibi</h1>
+          </div>
+          <div class="badge">
+            Digital Forensics<br />Field Worksheet<br />~20 minutes
+          </div>
+        </div>
+        <div class="namebar">
+          <div class="fld"><b>Investigator</b><span class="uline"></span></div>
+          <div class="fld"><b>Squad</b><span class="uline"></span></div>
+          <div class="fld"><b>Date</b><span class="uline"></span></div>
+        </div>
+      </header>
+
+      <!-- Intro -->
+      <div class="sec">
+        <div class="sec-h">
+          <span class="sec-n">1</span>
+          <h2>What is digital forensics?</h2>
+          <span class="time">~3 min</span>
+        </div>
+        <p class="lead">
+          <b>Digital forensics</b> is the science of finding facts on phones, computers, and
+          drives — then proving them. A good investigator never trusts one clue. They collect
+          several pieces of evidence and check whether the story holds together.
+        </p>
+        <div class="key">
+          <div class="item"><b>Metadata</b> — hidden data <i>about</i> a file: when a photo was
+            taken, and the GPS location where the phone was.</div>
+          <div class="item"><b>Timeline</b> — putting events in time order to see what really
+            happened, and when.</div>
+          <div class="item"><b>Deleted ≠ gone</b> — "deleted" files often sit in a
+            <i>Recently Deleted</i> folder and can be recovered.</div>
+          <div class="item"><b>Corroboration</b> — when two or more clues point to the same
+            fact, you can trust it.</div>
+        </div>
+        <div class="q">
+          <div class="qt"><span class="qnum">Q1.</span> In your own words, why shouldn't an
+            investigator trust a single screenshot or one photo by itself?</div>
+          <div class="ans"></div>
+          <div class="ans"></div>
+        </div>
+      </div>
+
+      <!-- The case -->
+      <div class="sec">
+        <div class="sec-h">
+          <span class="sec-n">2</span>
+          <h2>Your assignment</h2>
+          <span class="time">~2 min</span>
+        </div>
+        <div class="panel brief">
+          <div class="ph">Case Brief</div>
+          <p style="margin:0">
+            <b>Dana Brisco</b>, a clerk at Hartwell Hardware in the town of Brindle Falls,
+            called in <b>sick last Saturday</b>. Their manager suspects Dana faked it to attend
+            the sold-out <b>Aurora Static</b> concert. Dana handed over their phone to clear
+            their name. <b>Your job:</b> examine the phone and decide — does the alibi hold up?
+          </p>
+        </div>
+        <div class="panel tip">
+          <div class="ph">How to work</div>
+          <p style="margin:0">
+            Open <b>every</b> app on the phone — Messages, Phone, Photos, Browser, and Notes —
+            and check each <b>Recently Deleted</b> folder. Don't stop at the first thing you
+            find. Record what you see in the evidence log on the next page.
+          </p>
+        </div>
+        <div class="q">
+          <div class="qt"><span class="qnum">Q2.</span> Before you start: what would Dana's phone
+            look like if they <i>really</i> were home sick all day? Write one prediction.</div>
+          <div class="ans"></div>
+        </div>
+      </div>
+
+      <div class="footer-note">
+        Training scenario in the fictional town of Brindle Falls — not a real person. Page 1 of 2.
+      </div>
+    </section>
+
+    <!-- ================= PAGE 2 ================= -->
+    <section class="page">
+      <!-- Evidence log -->
+      <div class="sec">
+        <div class="sec-h">
+          <span class="sec-n">3</span>
+          <h2>Evidence log — search the phone</h2>
+          <span class="time">~9 min</span>
+        </div>
+        <p class="muted" style="margin-top:0">
+          For each app, write the <b>one clue</b> that matters most and the <b>time</b> attached to
+          it. Tip: in Photos, open a picture and read its <i>EXIF metadata</i> for the location.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>App</th>
+              <th>What did you find? (the key clue)</th>
+              <th style="width:74px">Time / date</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="app">📷 Photos</td><td class="blank"></td><td></td></tr>
+            <tr><td class="app">🗑️ Photos — Deleted</td><td class="blank"></td><td></td></tr>
+            <tr><td class="app">💬 Messages</td><td class="blank"></td><td></td></tr>
+            <tr><td class="app">📞 Phone (Calls)</td><td class="blank"></td><td></td></tr>
+            <tr><td class="app">🧭 Browser</td><td class="blank"></td><td></td></tr>
+            <tr><td class="app">📝 Notes</td><td class="blank"></td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Guiding questions -->
+      <div class="sec">
+        <div class="sec-h">
+          <span class="sec-n">4</span>
+          <h2>Connect the clues</h2>
+          <span class="time">~4 min</span>
+        </div>
+        <div class="q">
+          <div class="qt"><span class="qnum">Q3.</span> A photo's metadata shows <i>where</i> the
+            phone was. Which photo places Dana somewhere other than home on Saturday night —
+            and what's the location?</div>
+          <div class="ans"></div>
+        </div>
+        <div class="q">
+          <div class="qt"><span class="qnum">Q4.</span> The call log shows the sick-day call.
+            Who did Dana call on Saturday morning, and at what time?</div>
+          <div class="ans"></div>
+        </div>
+        <div class="q">
+          <div class="qt"><span class="qnum">Q5.</span> Find one message or note that proves
+            the sick day was <i>planned in advance</i>. Quote it.</div>
+          <div class="ans"></div>
+          <div class="ans"></div>
+        </div>
+        <div class="q">
+          <div class="qt"><span class="qnum">Q6.</span> Something was deleted from the phone.
+            What was it, and why do you think Dana deleted it?</div>
+          <div class="ans"></div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="sec">
+        <div class="sec-h">
+          <span class="sec-n">5</span>
+          <h2>Build the timeline</h2>
+          <span class="time">~2 min</span>
+        </div>
+        <p class="muted" style="margin:0">Put your three strongest clues in time order.</p>
+        <div class="tl-head"><div>Time</div><div>What happened (and which app proves it)</div></div>
+        <div class="timeline-row"><div class="when"></div><div class="what"></div></div>
+        <div class="timeline-row"><div class="when"></div><div class="what"></div></div>
+        <div class="timeline-row"><div class="when"></div><div class="what"></div></div>
+      </div>
+
+      <!-- Verdict -->
+      <div class="sec">
+        <div class="sec-h">
+          <span class="sec-n">6</span>
+          <h2>Your verdict</h2>
+          <span class="time">~2 min</span>
+        </div>
+        <p style="margin:2px 0"><b>Does Dana's alibi hold up?</b></p>
+        <div class="verdict">
+          <div class="vbox"><span class="box"></span> The alibi HOLDS (Dana was sick)</div>
+          <div class="vbox"><span class="box"></span> The alibi FAILS (Dana faked it)</div>
+        </div>
+        <div class="q">
+          <div class="qt">Back up your verdict with evidence from <b>at least three different
+            apps</b> (remember: corroboration!).</div>
+          <div class="ans tall"></div>
+          <div class="ans"></div>
+          <div class="ans"></div>
+        </div>
+        <div class="q">
+          <div class="qt"><span class="qnum">Q7.</span> Reflection: what is one thing this case
+            taught you about how investigators find the truth?</div>
+          <div class="ans"></div>
+        </div>
+      </div>
+
+      <div class="footer-note">
+        Forensics Station · The Saturday Alibi · Kaycenia Security Academy — Page 2 of 2.
+      </div>
+    </section>
+  </body>
+</html>
