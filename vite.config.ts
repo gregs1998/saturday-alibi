@@ -11,7 +11,6 @@ import react from "@vitejs/plugin-react";
 // assets must be emitted at "/...". A sub-path base here would 404 every asset
 // and render a white screen.
 const BASE = "/";
-
 export default defineConfig({
   base: BASE,
   plugins: [react()],
